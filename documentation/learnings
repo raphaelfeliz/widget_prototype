@@ -1,0 +1,99 @@
+# Phase 2 — Learning Notes
+
+A summary of concepts, commands, and reasoning developed while setting up version control and hosting infrastructure.
+
+---
+
+## Version Control (Git & GitHub)
+
+- Git is **local version tracking**; GitHub is **remote synchronization**.  
+- Every project can have **one or more remotes**, but typically only one called `origin`.  
+- `.git` is a hidden folder that acts as the **database of commits and branches**.  
+- `git add .` stages files for the next commit; `.gitignore` prevents unwanted ones.  
+- A **clean working tree** means no unstaged or uncommitted changes remain.  
+- Each commit is a **snapshot**; not just a diff — this ensures reproducibility.  
+- The `main` branch is the **trunk line** — all stable code flows through it.  
+- GitHub is the **canonical source of truth** for collaboration and CI/CD automation.  
+- Linking (`git remote add origin`) creates a persistent connection between your local and cloud repos.  
+- `push -u origin main` sets an upstream reference, making future pushes simpler.  
+
+---
+
+## Firebase (Hosting Environment)
+
+- Firebase projects are **containers for multiple apps** (web, Android, iOS).  
+- Project IDs are **globally unique** identifiers used for all backend resources.  
+- Firebase Hosting is **static file hosting**, perfect for deploying JS widgets.  
+- The Firebase CLI provides **command-line control** over setup, configuration, and deployment.  
+- Each Firebase project is a **sandboxed environment**, fully separate from others.  
+- Firebase supports **custom headers** (CORS, cache, security) configured via `firebase.json`.  
+- CORS (`Access-Control-Allow-Origin: *`) allows browser access from external sites.  
+- Global hosting ensures low latency for users across regions.  
+
+---
+
+## Configuration Hygiene
+
+- `.gitignore` ensures the repo contains only **source and configuration**, not build artifacts.  
+- `node_modules/` is excluded because dependencies are **reinstallable**, not stored.  
+- `dist/` is excluded because it’s **reproducible** via `npm run build`.  
+- Maintaining a **lightweight repo** speeds up cloning and CI/CD builds.  
+- Consistency between local and remote environments avoids “it works on my machine” errors.  
+
+---
+
+## Workflow Insights
+
+1. **Local → Remote → Cloud**  
+   Build locally → Version on GitHub → Deploy via Firebase.  
+2. **One command, one purpose**  
+   Use Git for history, Vite for build, Firebase for hosting — keep scopes clean.  
+3. **Separation of concerns**  
+   Source control (Git) ≠ Build (Vite) ≠ Hosting (Firebase).  
+4. **Automation mindset**  
+   Manual steps are temporary — the end goal is full CI/CD.  
+5. **Evidence-based process**  
+   Always verify success (commands, outputs, logs) before marking a step complete.  
+
+---
+
+## Concept Summary
+
+| Concept | Meaning |
+|----------|----------|
+| Git | Local version control |
+| GitHub | Remote repo hosting |
+| Firebase | Cloud platform for web apps |
+| CLI | Command Line Interface |
+| CORS | Cross-Origin Resource Sharing |
+| CI/CD | Continuous Integration / Continuous Deployment |
+| Origin | Remote name for GitHub |
+| Commit | Saved snapshot of changes |
+| Branch | Independent line of development |
+| Upstream | Remote tracking reference |
+| Clean tree | No pending changes |
+| Project ID | Unique Firebase identifier |
+
+---
+
+## Mental Models
+
+- **Source of truth:** GitHub is always right. Local copies must sync to it.  
+- **Build determinism:** The same build should always yield identical output.  
+- **Isolation:** Every system (code, build, hosting) does one job well.  
+- **Automation before scale:** Don’t scale manual steps — automate them first.  
+- **Traceability:** Every action leaves an auditable, reversible history.  
+
+---
+
+## Reflection
+
+By completing Phase 2, the project moved from **local-only development** to a **traceable, shareable, and automatable ecosystem**.  
+The foundation for continuous delivery, collaboration, and deployment is now in place.  
+Everything that follows — Firebase configuration, GitHub Actions, CORS headers — builds on this structure.
+
+---
+
+Author: Rafana  
+Last updated: October 21, 2025  
+Status: Phase 2 Learning Summary Complete

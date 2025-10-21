@@ -165,3 +165,62 @@ dist = generated build output
 logs = transient data
 clean repo = smaller, faster commits
 Status: ✅ Completed
+
+## LOG 10 — Step 2.5: First Code Commit & Push to GitHub
+
+Description:  
+Staged all project files, performed the initial commit, and successfully pushed them to the remote GitHub repository. Verified synchronization between the local `main` branch and `origin/main` with a clean working tree.
+
+Updated Specs:  
+- Branch: `main`  
+- Remote: `origin` (GitHub)  
+- Commit message: "Initial commit: project setup and Vite build"  
+- Push status: Successful  
+- Repository state: Clean and in sync  
+
+Status: ✅ Completed  
+
+## LOG 11 — Step 3.1: Install Firebase CLI (locally)
+
+Description:  
+Verified that the Firebase CLI is installed and authenticated on the local development machine. This enables project initialization, hosting setup, and deployment commands directly from the terminal.
+
+Updated Specs:  
+- Firebase CLI version: 14.20.0  
+- Authenticated user: raphael.feliz@gmail.com  
+- Login state: Active  
+- Command scope: Hosting and CI/CD setup  
+
+Status: ✅ Completed  
+
+## LOG 12 — Step 3.2: Firebase Hosting Initialization
+
+Description:  
+Initialized Firebase Hosting for the `widget_prototype` project and linked it to the remote Firebase project `fdaChatAIStudio`. Generated configuration files `.firebaserc` and `firebase.json` defining hosting behavior and deployment targets.
+
+Updated Specs:  
+- Firebase Project: fdaChatAIStudio  
+- Project ID: gen-lang-client-0545699517  
+- Public directory: dist  
+- SPA rewrite: No  
+- GitHub CI/CD setup: Deferred (manual setup planned for Step 3.5)  
+- Generated files:  
+  - `.firebaserc` — project link reference  
+  - `firebase.json` — hosting configuration rules  
+
+Status: ✅ Completed  
+
+## LOG 13 — Step 3.3: Configure CORS Headers
+
+Description:  
+Added a headers rule to `firebase.json` so all hosted files are served with permissive CORS (GET/OPTIONS), enabling third-party sites to load `blue-widget.js` without browser blocks. Validated configuration with a Hosting dry run.
+
+Updated Specs:  
+- Headers applied to: all files (`**`)  
+- Access-Control-Allow-Origin: `*`  
+- Access-Control-Allow-Methods: `GET, OPTIONS`  
+- Access-Control-Allow-Headers: `Content-Type`  
+- Validation: `firebase deploy --only hosting --dry-run` succeeded  
+- Hosting domain (default): `https://gen-lang-client-0545699517.web.app`  
+
+Status: ✅ Completed
